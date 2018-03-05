@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">MediaPlayerAlexTroy</string>
+
+    <string name="go_to_the_song_list">Go to the song list</string>
+
+    <string name="song_title_card">SongCard</string>
+    <string name="song_author_card">SongCard</string>
+
+    <string name="this_are_songs_library_screen">This are songs library screen</string>
+    <string name="this_menu_with_a_song_card">This menu with a song card</string>
+
+    <string name="it_is_my_life">It\'s my life</string>
+    <string name="number_two">Number two</string>
+    <string name="number_three">Number three</string>
+    <string name="number_four">Number four</string>
+    <string name="number_five">Number five</string>
+    <string name="number_six">Number six</string>
+    <string name="number_ыумут">Number seven</string>
+    <string name="number_eight">Number eight</string>
+    <string name="number_nine">Number nine</string>
+    <string name="number_ten">Number ten</string>
+
+    <string name="bon_jovi">Bon Jovi</string>
+    <string name="andrea_delgado_olson">Andrea Delgado-Olson</string>
+    <string name="music_library">Music Library</string>
+    <string name="media_screen">Media Screen</string>
+
+</resources>

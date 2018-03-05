@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/library_gradient"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/to_song_list_btn"
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="26dp"
+        android:text="@string/go_to_the_song_list"
+        android:textColor="@android:color/white"
+        android:textSize="22sp" />
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="list_item_height">80dp</dimen>
+
+    <dimen name="top_bar_height_140">100dp</dimen>
+
+    <dimen name="margin_top_26">26dp</dimen>
+    <dimen name="song_title_text_24">24sp</dimen>
+    <dimen name="sont_author_text_20">20sp</dimen>
+    <dimen name="margin_top_10">10dp</dimen>
+    <dimen name="play_btn_card_width">120dp</dimen>
+    <dimen name="play_btn_card_height">80dp</dimen>
+    <dimen name="screen_about_text">22sp</dimen>
+    <dimen name="margin_bottom_150">150dp</dimen>
+    <dimen name="sont_author_list">18sp</dimen>
+    <dimen name="sont_title_list">20sp</dimen>
+
+    <dimen name="song_number_list">54dp</dimen>
+
+    <dimen name="margin_left_16">16dp</dimen>
+    <dimen name="margin_top_16">16dp</dimen>
+    <dimen name="margin_left_8">8dp</dimen>
+    <dimen name="margin_bottom_16">16dp</dimen>
+    <dimen name="number_text_list_18">18sp</dimen>
+</resources>
