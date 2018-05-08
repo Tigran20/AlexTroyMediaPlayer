@@ -8,8 +8,8 @@
     <dimen name="song_title_text_24">24sp</dimen>
     <dimen name="song_author_text_20">20sp</dimen>
     <dimen name="margin_top_10">10dp</dimen>
-    <dimen name="play_btn_card_width">120dp</dimen>
-    <dimen name="play_btn_card_height">80dp</dimen>
+    <dimen name="play_btn_card_width">50dp</dimen>
+    <dimen name="play_btn_card_height">50dp</dimen>
     <dimen name="screen_about_text">22sp</dimen>
     <dimen name="margin_bottom_150">150dp</dimen>
     <dimen name="song_author_list">18sp</dimen>

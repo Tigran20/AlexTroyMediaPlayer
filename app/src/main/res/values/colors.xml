@@ -9,4 +9,9 @@
 
     <color name="backgroundItemColor">#db000000</color>
 
+    <color name="colorCardTitle">#263238</color>
+    <color name="colorCardTitle2">#263238</color>
+
+
+
 </resources>

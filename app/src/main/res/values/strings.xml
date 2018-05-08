@@ -23,6 +23,6 @@
     <string name="bon_jovi">Bon Jovi</string>
     <string name="andrea_delgado_olson">Andrea Delgado-Olson</string>
     <string name="music_library">Music Library</string>
-    <string name="media_screen">Media Screen</string>
+    <string name="media_screen">Now playing</string>
 
 </resources>

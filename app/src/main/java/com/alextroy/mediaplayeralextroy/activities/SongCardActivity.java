@@ -10,8 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alextroy.mediaplayeralextroy.R;
 
@@ -19,13 +20,12 @@ public class SongCardActivity extends AppCompatActivity {
 
     private MediaPlayer mediaPlayer;
     private AudioManager audioManager;
-
-    private ImageButton playBtn;
-    private ImageButton pauseBtn;
-
+    private ImageView playBtn;
+    private ImageView prevBtn;
+    private ImageView nextBtn;
     private TextView songTitle;
     private TextView songAuthor;
-
+    private Toolbar toolbar;
     private Uri songId;
 
     @Override
@@ -33,42 +33,67 @@ public class SongCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.song_card);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        init();
+        toolBar();
+        setData();
+        audioManager();
+    }
 
+    private void init() {
+        toolbar = findViewById(R.id.toolbar);
+        songTitle = findViewById(R.id.song_title_card);
+        songAuthor = findViewById(R.id.song_author_card);
+
+        prevBtn = findViewById(R.id.prev_btn);
+        playBtn = findViewById(R.id.play_btn);
+        nextBtn = findViewById(R.id.next_btn);
+    }
+
+    private void toolBar() {
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
 
-        songTitle = findViewById(R.id.song_title_card);
-        this.songAuthor = findViewById(R.id.song_author_card);
-
+    private void setData() {
         Intent intent = getIntent();
         String title = intent.getStringExtra("title");
         String author = intent.getStringExtra("author");
         Uri id = intent.getParcelableExtra("songId");
 
         songTitle.setText(title);
-        this.songAuthor.setText(author);
-
+        songAuthor.setText(author);
         songId = id;
+    }
 
+    private void audioManager() {
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-
-        playBtn = findViewById(R.id.play_btn);
-        pauseBtn = findViewById(R.id.pause_btn);
-
         mediaPlayer = MediaPlayer.create(SongCardActivity.this, songId);
-        playBtn.setOnClickListener(new View.OnClickListener() {
+
+        prevBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                mediaPlayer.start();
+            public void onClick(View v) {
+                Toast.makeText(SongCardActivity.this, "In developing", Toast.LENGTH_SHORT).show();
             }
         });
 
-        pauseBtn.setOnClickListener(new View.OnClickListener() {
+        playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer.pause();
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.pause();
+                    playBtn.setImageResource(R.drawable.ic_play_arrow_white_48dp);
+                } else {
+                    mediaPlayer.start();
+                    playBtn.setImageResource(R.drawable.ic_pause_white_48dp);
+                }
+            }
+        });
+
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(SongCardActivity.this, "In developing", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -80,7 +105,6 @@ public class SongCardActivity extends AppCompatActivity {
             audioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
     }
-
 
     @Override
     protected void onStop() {

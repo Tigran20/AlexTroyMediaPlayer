@@ -35,9 +35,8 @@ public class SongListActivity extends AppCompatActivity {
         setContentView(R.layout.song_list_activity);
 
         init();
-        actionBar();
+        toolBar();
         adapter();
-
         getAllMediaMp3Files();
     }
 
@@ -47,7 +46,7 @@ public class SongListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.list);
     }
 
-    private void actionBar() {
+    private void toolBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
