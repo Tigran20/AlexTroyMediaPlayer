@@ -19,13 +19,12 @@ public class MainActivity extends AppCompatActivity {
     private Button toSongsListBtn;
     public static final int RUNTIME_PERMISSION_CODE = 7;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AndroidRuntimePermission();
+        androidRuntimePermission();
 
         toSongsListBtn = findViewById(R.id.to_song_list_btn);
         toSongsListBtn.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void AndroidRuntimePermission() {
+    public void androidRuntimePermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -68,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                             RUNTIME_PERMISSION_CODE
                     );
                 }
-            } else {
             }
         }
     }
@@ -78,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case RUNTIME_PERMISSION_CODE: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                } else {
                 }
             }
         }

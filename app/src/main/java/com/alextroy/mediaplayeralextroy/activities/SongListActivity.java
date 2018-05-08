@@ -1,7 +1,6 @@
 package com.alextroy.mediaplayeralextroy.activities;
 
 import android.content.ContentResolver;
-import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,53 +8,62 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.alextroy.mediaplayeralextroy.R;
-import com.alextroy.mediaplayeralextroy.SongsAdapter;
+import com.alextroy.mediaplayeralextroy.adapter.SongsAdapter;
 import com.alextroy.mediaplayeralextroy.model.Songs;
 
 import java.util.ArrayList;
 
 public class SongListActivity extends AppCompatActivity {
 
-    private RecyclerView listView;
-    private SongsAdapter songsAdapter;
-    ContentResolver contentResolver;
-    Cursor cursor;
-    Uri uri;
-    ArrayList<Songs> songsSongs;
+    private RecyclerView recyclerView;
+    private SongsAdapter adapter;
+    private ContentResolver contentResolver;
+    private Cursor cursor;
+    private Uri uri;
+    private ArrayList<Songs> listSongs;
+    private RecyclerView.LayoutManager layoutManager;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.song_list_activity);
 
-        songsSongs = new ArrayList<Songs>();
+        init();
+        actionBar();
+        adapter();
 
-        listView = findViewById(R.id.list);
-        listView.setHasFixedSize(true);
-
-        LinearLayoutManager horizontalManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        listView.setLayoutManager(horizontalManager);
-        songsAdapter = new SongsAdapter(this, songsSongs);
-        listView.setAdapter(songsAdapter);
-
-        GetAllMediaMp3Files();
+        getAllMediaMp3Files();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
+    private void init() {
+        toolbar = findViewById(R.id.toolbar);
+        listSongs = new ArrayList<>();
+        recyclerView = findViewById(R.id.list);
     }
 
+    private void actionBar() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
 
-    public void GetAllMediaMp3Files() {
+    private void adapter() {
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        adapter = new SongsAdapter(this, listSongs);
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void getAllMediaMp3Files() {
         contentResolver = getContentResolver();
         uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
 
@@ -87,23 +95,30 @@ public class SongListActivity extends AppCompatActivity {
                 String SongArtist = cursor.getString(Artist);
                 int SongDuration = cursor.getInt(duration);
 
-                songsSongs.add(new Songs(SongTitle, SongArtist, getDuration(SongDuration), finalSuccessfulUri));
+                listSongs.add(new Songs(SongTitle, SongArtist, getDuration(SongDuration), finalSuccessfulUri));
 
             } while (cursor.moveToNext());
         }
     }
 
-    public String getDuration(int msecs) {
+    private String getDuration(int msecs) {
         int seconds = msecs / 1000 % 60;
         String correctSecs;
         if (seconds < 10) {
             correctSecs = "0" + Integer.toString(seconds);
-        } else if (seconds == 0) {
-            correctSecs = "00";
         } else {
             correctSecs = Integer.toString(seconds);
         }
         return (msecs / (1000 * 60)) % 60 + ":" + correctSecs;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -1,41 +1,33 @@
-package com.alextroy.mediaplayeralextroy;
+package com.alextroy.mediaplayeralextroy.adapter;
 
-import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.alextroy.mediaplayeralextroy.R;
 import com.alextroy.mediaplayeralextroy.activities.SongCardActivity;
 import com.alextroy.mediaplayeralextroy.model.Songs;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> {
 
-    private Activity activity;
+    private Context context;
     private List<Songs> songsList;
 
-    public SongsAdapter(Activity activity, List<Songs> songsList) {
-        this.activity = activity;
+    public SongsAdapter(Context context, List<Songs> songsList) {
+        this.context = context;
         this.songsList = songsList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View view = inflater.inflate(R.layout.list_song, parent, false);
-
+        View view = LayoutInflater.from(context).inflate(R.layout.song_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -72,7 +64,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> 
                     intent.putExtra("title", songTextView.getText().toString());
                     intent.putExtra("author", artistTextView.getText().toString());
                     intent.putExtra("songId", songId);
-                    activity.startActivity(intent);
+                    context.startActivity(intent);
                 }
             });
         }

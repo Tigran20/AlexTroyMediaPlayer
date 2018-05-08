@@ -4,25 +4,29 @@ import android.net.Uri;
 
 public class Songs {
 
-    private String mArtist;
-    private String mTitle;
+    private String artist;
+    private String title;
     private Uri audioResourceId;
-    private String mDuration;
+    private String duration;
 
     public Songs(String title, String artist, String duration, Uri audioResourceId) {
-        mArtist = artist;
-        mTitle = title;
-        mDuration = duration;
+        this.artist = artist;
+        this.title = title;
+        this.duration = duration;
         this.audioResourceId = audioResourceId;
     }
 
     public String getArtist() {
-        return mArtist;
+        return artist;
     }
+
     public String getTitle() {
-        return mTitle;
+        return title;
     }
-    public String getDuration() { return mDuration; }
+
+    public String getDuration() {
+        return duration;
+    }
 
     public Uri getAudioResourceId() {
         return audioResourceId;
